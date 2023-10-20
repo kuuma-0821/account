@@ -1,0 +1,109 @@
+header{
+    background-color: black;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+header ul{
+    float: left;
+    line-height: 40px;
+}
+
+.logo ul li{
+    float: left;
+    color: white;
+    padding-right: 30px;
+    font-size: 20px;
+    list-style: none;
+    line-height: 30px;
+}
+
+main{
+    clear: both;
+}
+
+.left{
+    float: left;
+    border-top: solid 5px blue;
+    border-right: solid 5px blue;
+    border-bottom: solid 5px blue;
+    width: 68%;
+    height: 1650px;
+    font-size: 20px;
+}
+
+.left h1{
+    margin-top: -1px;
+    margin-left: 10px;
+    border-left: solid 7px;
+    border-bottom: solid 3px;
+}
+
+.left img{
+    width: 100%;
+}
+
+h3{
+    margin-top: -3px;
+    margin-left: 10px;
+}
+
+.gray_box{
+    background-color: gray;
+    width: 100%;
+    height: 650px;
+    text-align: center;
+    margin-top: -20px;
+}
+
+.gray_box img{
+    width: 100%;
+    height: 200px;
+    margin: 40px 5px 0px 10px;
+}
+
+.gray_box .box_pc2{
+    display: inline-block;
+}
+
+.gray_box .box_pc3{
+    display: inline-block;
+}
+
+.gray_box p{
+    margin-top: 1px;
+}
+.right{
+    float: left;
+    border-top: solid 5px red;
+    border-left: solid 5px red;
+    border-bottom: solid 5px red;
+    width: 31%;
+    height: 1650px;
+
+}
+
+.right li{
+    list-style: none;
+}
+
+.right h2{
+    border-bottom: dotted 2px gray;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+footer{
+    clear: left;
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    left: 0px;
+    text-align: center;
+    line-height: 60px;
+}
