@@ -33,28 +33,28 @@
         <div>
             <li>
             <label>名前（姓）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前(姓)は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（姓）は「ひらがな」または「漢字」で記入ください。" type="text">
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前(姓)は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（姓）は「ひらがな」または「漢字」で記入ください。" type="text" name="namesei">
             </li>
         </div>
         
         <div>
             <li>
             <label>名前（名）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前（名）は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（名）は「ひらがな」または「漢字」で記入ください。" ype="text" name="name" id="name">
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前（名）は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（名）は「ひらがな」または「漢字」で記入ください。" ype="text" name="namemei" id="name">
             </li>
         </div>
         
         <div>
             <li>
             <label>カナ（姓）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（姓）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（姓）は「カタカナ」で記入ください。" type="text" name="name" id="name">
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（姓）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（姓）は「カタカナ」で記入ください。" type="text" name="kanasei" id="name">
             </li>
         </div>
         
         <div>
             <li>
             <label>カナ（名）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（名）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（名）は「カタカナ」で記入ください。" type="text" name="name" id="name">
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（名）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（名）は「カタカナ」で記入ください。" type="text" name="kanamei" id="name">
             </li>
         </div>
         
@@ -68,29 +68,29 @@
         <div>
             <li>
             <label>パスワード</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="パスワードは必須です" data-pattern="^[a-zA-Z0-9!-/:-@[-`{-~]*$" data-error-pattern="パスワードは半角英数字で記入ください。" type="text" name="name" id="name">
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="パスワードは必須です" data-pattern="^[a-zA-Z0-9!-/:-@[-`{-~]*$" data-error-pattern="パスワードは半角英数字で記入ください。" type="text" name="pass" id="name">
             </li>
         </div>
         
         <div>
             <li>
             <label>性別</label>
-            <input class="required" data-error-required="いずれかを選択してください" type="radio" name="seibetu" value="otoko">男
-            <input type="radio" name="seibetu" value="onnna">女
+            <input class="required" data-error-required="いずれかを選択してください" type="radio" name="seibetu" value="男">男
+            <input type="radio" name="seibetu" value="女">女
             </li>
         </div>
         
         <div>
             <li>
             <label>郵便番号</label>
-            <input class="required pattern maxlength" data-maxlength="7" data-error-required="郵便番号は必須です" data-pattern="\d{3}-?\d{4}" data-error-pattern="郵便番号はハイフンなしで半角数字７文字で記入ください。" type="text" name="name" id="name">
+            <input class="required pattern maxlength" data-maxlength="7" data-error-required="郵便番号は必須です" data-pattern="\d{3}-?\d{4}" data-error-pattern="郵便番号はハイフンなしで半角数字７文字で記入ください。" type="text" name="yuubinn" id="name">
             </li>
         </div>
         
         <div>
             <li>
             <label>都道府県</label>
-            <select class="required" data-error-required="都道府県が選択されていません。" name="season" id="season">
+            <select class="required" data-error-required="都道府県が選択されていません。" name="kenn" id="season">
                 <option value=""></option>
                 <option value="北海道">北海道</option>
                 <option value="青森県">青森県</option>
@@ -146,20 +146,20 @@
         <div>
             <li>
             <label>住所(市区町村)</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="住所（市区町村）は必須です。" data-pattern="^[ぁ-ん一-龯ァ-ヶー0-9-+　+]+$" data-error-pattern="住所（市区町村）は「ひらがな」、「漢字」、「数字」、「カタカナ」、「記号（ハイフンとスペース）」が入力可能です。" type="text" name="name" id="name"> 
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="住所（市区町村）は必須です。" data-pattern="^[ぁ-ん一-龯ァ-ヶー0-9-+　+]+$" data-error-pattern="住所（市区町村）は「ひらがな」、「漢字」、「数字」、「カタカナ」、「記号（ハイフンとスペース）」が入力可能です。" type="text" name="juusyosiku" id="name"> 
             </li>
         </div>
         
         <div>
             <li>
             <label>住所（番地）</label>
-            <input class="required pattern maxlength" data-maxlength="100" data-error-required="住所（市区町村）は必須です。" data-pattern="^[ぁ-ん一-龯ァ-ヶー0-9-+　+]+$" data-error-pattern="住所（市区町村）は「ひらがな」、「漢字」、「数字」、「カタカナ」、「記号（ハイフンとスペース）」が入力可能です。" type="text" name="name" id="name"> 
+            <input class="required pattern maxlength" data-maxlength="100" data-error-required="住所（番地）は必須です。" data-pattern="^[ぁ-ん一-龯ァ-ヶー0-9-+　+]+$" data-error-pattern="住所（市区町村）は「ひらがな」、「漢字」、「数字」、「カタカナ」、「記号（ハイフンとスペース）」が入力可能です。" type="text" name="juusyobann" id="name"> 
             </li>
         </div>
         
         <div>
             <label>アカウント権限</label>
-            <select name="XXX" id="account">
+            <select name="aka" id="account">
                 <option value="一般"　class="required">一般</option>
                 <option value="管理者">管理者</option>
             </select>
