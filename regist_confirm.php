@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>アカウント登録画面</title>
-    <link rel="stylesheet" type="text/css" href="style4.css">
+    <link rel="stylesheet" type="text/css" href="style5.css">
 </head>
 
 <body>
@@ -28,6 +28,7 @@
     
     <h1>アカウント登録確認画面</h1>
     
+    <div class="kakuningamen">
     <ul>
         <div>
             <li>
@@ -112,7 +113,14 @@
             <?php echo $_POST['aka']; ?>
             </li>
         </div>
+        
+        <div class="botan">
+            <input type="submit" value="前に戻る" id="modoru">
+            <input type="submit" value="登録する" id="touroku">
+        </div>
+        
     </ul>
+    </div>
     
     
     
