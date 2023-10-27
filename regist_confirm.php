@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>アカウント登録画面</title>
-    <link rel="stylesheet" type="text/css" href="style5.css">
+    <link rel="stylesheet" type="text/css" href="style6.css">
 </head>
 
 <body>
@@ -68,7 +68,8 @@
         <div>
             <li>
             <label>パスワード</label>
-            <?php echo $_POST['pass']; ?>
+            <label>●●●●●●●</label><br>
+            <input type="hidden" value="<?php echo $_POST['pass']; ?>" name="pass">
             </li>
         </div>
         
@@ -114,10 +115,13 @@
             </li>
         </div>
         
-        <div class="botan">
+        <form action="regist.php">
             <input type="submit" value="前に戻る" id="modoru">
+        </form>
+        
+        <form action="regist_complete.php" method="post">
             <input type="submit" value="登録する" id="touroku">
-        </div>
+        </form>
         
     </ul>
     </div>
