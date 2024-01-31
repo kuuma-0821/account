@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_POST['namesei'])){
+    $namesei = $_SESSION['namesei'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -8,6 +15,11 @@
 </head>
 
 <body>
+    <?php
+    if (isset($namesei)) {
+        echo $namesei;
+    }
+?>
     
     <div class="logo_img">
     <img src="diblog_logo.jpg">
@@ -33,7 +45,7 @@
         <div>
             <li>
             <label>名前（姓）</label>
-            <?php echo $_POST['namesei']; ?>
+            <?php echo $namesei; ?>
             </li>
         </div>
         
@@ -115,12 +127,13 @@
             </li>
         </div>
         
-        <form action="regist.php">
+        <form action="regist.php?action=edit">
             <input type="submit" value="前に戻る" id="modoru">
+            <input type="hidden" value="<?php echo $namesei ?>" name="namesei">
         </form>
         
         <form action="regist_complete.php" method="post">
-            <input type="submit" value="登録する" id="touroku">
+            <input type="submit" value="登録する" id="touroku" name="token">
         </form>
         
     </ul>

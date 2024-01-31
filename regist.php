@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if(isset($_POST['submit'])) {
+    $namesei1 = htmlspecialchars($_POST['namesei'],ENT_QUOTES | ENT_HTML5);
+    $_SESSION['namesei'] = $namesei;
+}
+
+if (isset($_GET) && isset($_GET['action']) && $_GET['action'] === 'edit') {
+  $namesei = $_SESSION['namesei'];
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -33,42 +48,42 @@
         <div>
             <li>
             <label>名前（姓）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前(姓)は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（姓）は「ひらがな」または「漢字」で記入ください。" type="text" name="namesei">
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前(姓)は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（姓）は「ひらがな」または「漢字」で記入ください。" type="text" name="namesei" value="<?php if (isset($namesei)) {echo $namesei;} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>名前（名）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前（名）は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（名）は「ひらがな」または「漢字」で記入ください。" ype="text" name="namemei" id="name">
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前（名）は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（名）は「ひらがな」または「漢字」で記入ください。" ype="text" name="namemei" id="name" >
             </li>
         </div>
         
         <div>
             <li>
             <label>カナ（姓）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（姓）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（姓）は「カタカナ」で記入ください。" type="text" name="kanasei" id="name">
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（姓）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（姓）は「カタカナ」で記入ください。" type="text" name="kanasei" id="name" >
             </li>
         </div>
         
         <div>
             <li>
             <label>カナ（名）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（名）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（名）は「カタカナ」で記入ください。" type="text" name="kanamei" id="name">
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（名）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（名）は「カタカナ」で記入ください。" type="text" name="kanamei" id="name" >
             </li>
         </div>
         
         <div>
             <li>
             <label>メールアドレス</label>
-            <input class="required pattern　maxlength" data-maxlength="100" data-pattern="email" data-error-required="メールアドレスは必須です" data-error-pattern="メールアドレスの形式が違います。" type="email" id="email1" name="email1">
+            <input class="required pattern　maxlength" data-maxlength="100" data-pattern="email" data-error-required="メールアドレスは必須です" data-error-pattern="メールアドレスの形式が違います。" type="email" id="email1" name="email1" >
             </li>
         </div>
         
         <div>
             <li>
             <label>パスワード</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="パスワードは必須です" data-pattern="^[a-zA-Z0-9!-/:-@[-`{-~]*$" data-error-pattern="パスワードは半角英数字で記入ください。" type="text" name="pass" id="name">
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="パスワードは必須です" data-pattern="^[a-zA-Z0-9!-/:-@[-`{-~]*$" data-error-pattern="パスワードは半角英数字で記入ください。" type="text" name="pass" id="name" >
             </li>
         </div>
         
@@ -76,21 +91,21 @@
             <li>
             <label>性別</label>
             <input class="required" data-error-required="いずれかを選択してください" type="radio" name="seibetu" value="男">男
-            <input type="radio" name="seibetu" value="女">女
+            <input type="radio" name="seibetu" value="女" >女
             </li>
         </div>
         
         <div>
             <li>
             <label>郵便番号</label>
-            <input class="required pattern maxlength" data-maxlength="7" data-error-required="郵便番号は必須です" data-pattern="\d{3}-?\d{4}" data-error-pattern="郵便番号はハイフンなしで半角数字７文字で記入ください。" type="text" name="yuubinn" id="name">
+            <input class="required pattern maxlength" data-maxlength="7" data-error-required="郵便番号は必須です" data-pattern="\d{3}-?\d{4}" data-error-pattern="郵便番号はハイフンなしで半角数字７文字で記入ください。" type="text" name="yuubinn" id="name" >
             </li>
         </div>
         
         <div>
             <li>
             <label>都道府県</label>
-            <select class="required" data-error-required="都道府県が選択されていません。" name="kenn" id="season">
+            <select class="required" data-error-required="都道府県が選択されていません。" name="kenn" id="season" >
                 <option value=""></option>
                 <option value="北海道">北海道</option>
                 <option value="青森県">青森県</option>
@@ -166,7 +181,7 @@
         </div>
         
         <div>
-            <input type="submit" value="確認する" id="kakunin">
+            <input type="submit" value="確認する" id="kakunin" name="submit">
         </div>
         </ul>
     </form>
