@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_POST['namesei'])){
-    $namesei = $_SESSION['namesei'];
+    $_SESSION['namesei'] = $_POST['namesei'];
 }
 ?>
 
@@ -15,11 +15,6 @@ if(isset($_POST['namesei'])){
 </head>
 
 <body>
-    <?php
-    if (isset($namesei)) {
-        echo $namesei;
-    }
-?>
     
     <div class="logo_img">
     <img src="diblog_logo.jpg">
@@ -45,7 +40,7 @@ if(isset($_POST['namesei'])){
         <div>
             <li>
             <label>名前（姓）</label>
-            <?php echo $namesei; ?>
+            <?php echo $_SESSION['namesei']; ?>
             </li>
         </div>
         
