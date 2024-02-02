@@ -3,14 +3,16 @@ session_start();
 
 
 
-if( isset( $_POST['namesei'])){
+if( isset( $_POST['submit'])){
     $_SESSION['namesei'] = $_POST['namesei'];
+    $_SESSION['namemei'] = $_POST['namemei'];
 }
 
 header('http://localhost/account/regist_confirm.php');
 
 if (isset($_GET) && isset($_GET['action']) && $_GET['action'] === 'edit') {
-  $_SESSION['namesei'] = $_SESSION['namesei'];
+        $namesei = $_SESSION['namesei'];
+        $namemei = $_SESSION['namemei'];
 }
 
 ?>
@@ -51,14 +53,14 @@ if (isset($_GET) && isset($_GET['action']) && $_GET['action'] === 'edit') {
         <div>
             <li>
             <label>名前（姓）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前(姓)は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（姓）は「ひらがな」または「漢字」で記入ください。" type="text" name="namesei" value="<?php if (isset($_SESSION['namesei'])) {echo $_SESSION['namesei'];} ?>" >
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前(姓)は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（姓）は「ひらがな」または「漢字」で記入ください。" type="text" name="namesei" value="<?php if (isset($namesei)) {echo $namesei;} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>名前（名）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前（名）は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（名）は「ひらがな」または「漢字」で記入ください。" ype="text" name="namemei" id="name" >
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前（名）は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（名）は「ひらがな」または「漢字」で記入ください。" type="text" name="namemei" value="<?php if (isset($namemei)) {echo $namemei;} ?>" >
             </li>
         </div>
         

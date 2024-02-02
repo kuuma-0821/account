@@ -1,7 +1,8 @@
 <?php
 session_start();
-if(isset($_POST['namesei'])){
-    $_SESSION['namesei'] = $_POST['namesei'];
+if(isset($_SESSION['namesei'])){
+    $namesei = $_SESSION['namesei'];
+    $namemei = $_SESSION['namemei'];
 }
 ?>
 
@@ -40,14 +41,14 @@ if(isset($_POST['namesei'])){
         <div>
             <li>
             <label>名前（姓）</label>
-            <?php echo $_SESSION['namesei']; ?>
+            <?php echo $namesei; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>名前（名）</label>
-            <?php echo $_POST['namemei']; ?>
+            <?php echo $namemei; ?>
             </li>
         </div>
         
@@ -122,9 +123,9 @@ if(isset($_POST['namesei'])){
             </li>
         </div>
         
-        <form action="regist.php?action=edit">
-            <input type="submit" value="前に戻る" id="modoru">
-            <input type="hidden" value="<?php echo $namesei ?>" name="namesei">
+        <form action="regist.php?action=edit" method="post">
+            <input type="submit" value="前に戻る" id="modoru" >
+            <input type="hidden"  name="namesei">
         </form>
         
         <form action="regist_complete.php" method="post">
