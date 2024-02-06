@@ -1,8 +1,18 @@
 <?php
 session_start();
-if(isset($_SESSION['namesei'])){
-    $namesei = $_SESSION['namesei'];
-    $namemei = $_SESSION['namemei'];
+if(isset($_POST['namesei'])){
+    $_SESSION['namesei'] = $_POST['namesei'];
+    $_SESSION['namemei'] = $_POST['namemei'];
+    $_SESSION['kanasei'] = $_POST['kanasei'];
+    $_SESSION['kanamei'] = $_POST['kanamei'];
+    $_SESSION['email'] = $_POST['email1'];
+    $_SESSION['pass'] = $_POST['pass'];
+    $_SESSION['seibetu'] = $_POST['seibetu'];
+    $_SESSION['yuubinn'] = $_POST['yuubinn'];
+    $_SESSION['kenn'] = $_POST['kenn'];
+    $_SESSION['juusyosiku'] = $_POST['juusyosiku'];
+    $_SESSION['juusyobann'] = $_POST['juusyobann'];
+    $_SESSION['aka'] = $_POST['aka'];
 }
 ?>
 
@@ -41,28 +51,28 @@ if(isset($_SESSION['namesei'])){
         <div>
             <li>
             <label>名前（姓）</label>
-            <?php echo $namesei; ?>
+            <?php echo $_SESSION['namesei']; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>名前（名）</label>
-            <?php echo $namemei; ?>
+            <?php echo $_SESSION['namemei']; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>カナ（姓）</label>
-            <?php echo $_POST['kanasei']; ?>
+            <?php echo $_SESSION['kanasei']; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>カナ（名）</label>
-            <?php echo $_POST['kanamei']; ?>
+            <?php echo $_SESSION['kanamei']; ?>
             </li>
         </div>
         
@@ -84,42 +94,42 @@ if(isset($_SESSION['namesei'])){
         <div>
             <li>
             <label>性別</label>
-            <?php echo $_POST['seibetu']; ?>
+            <?php echo $_SESSION['seibetu']; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>郵便番号</label>
-            <?php echo $_POST['yuubinn']; ?>
+            <?php echo $_SESSION['yuubinn']; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>住所（都道府県）</label>
-            <?php echo $_POST['kenn']; ?>
+            <?php echo $_SESSION['kenn']; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>住所（市区町村）</label>
-            <?php echo $_POST['juusyosiku']; ?>
+            <?php echo $_SESSION['juusyosiku']; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>住所（番地）</label>
-            <?php echo $_POST['juusyobann']; ?>
+            <?php echo $_SESSION['juusyobann']; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>アカウント権限</label>
-            <?php echo $_POST['aka']; ?>
+            <?php echo $_SESSION['aka']; ?>
             </li>
         </div>
         

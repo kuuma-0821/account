@@ -4,15 +4,26 @@ session_start();
 
 
 if( isset( $_POST['submit'])){
+    
     $_SESSION['namesei'] = $_POST['namesei'];
-    $_SESSION['namemei'] = $_POST['namemei'];
+    
 }
 
-header('http://localhost/account/regist_confirm.php');
+  header('http://localhost/account/regist_confirm.php');
 
 if (isset($_GET) && isset($_GET['action']) && $_GET['action'] === 'edit') {
         $namesei = $_SESSION['namesei'];
         $namemei = $_SESSION['namemei'];
+        $kanasei = $_SESSION['kanasei'];
+        $kanamei = $_SESSION['kanamei'];
+        $email = $_SESSION['email'];
+        $pass = $_SESSION['pass'];
+        $seibetu = $_SESSION['seibetu'];
+        $yuubinn = $_SESSION['yuubinn'];
+        $kenn = $_SESSION['kenn'];
+        $juusyosiku = $_SESSION['juusyosiku'];
+        $juusyobann = $_SESSION['juusyobann'];
+        $aka = $_SESSION['aka'];
 }
 
 ?>
@@ -67,43 +78,43 @@ if (isset($_GET) && isset($_GET['action']) && $_GET['action'] === 'edit') {
         <div>
             <li>
             <label>カナ（姓）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（姓）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（姓）は「カタカナ」で記入ください。" type="text" name="kanasei" id="name" >
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（姓）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（姓）は「カタカナ」で記入ください。" type="text" name="kanasei" id="name" value="<?php if (isset($kanasei)) {echo $kanasei;} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>カナ（名）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（名）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（名）は「カタカナ」で記入ください。" type="text" name="kanamei" id="name" >
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（名）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（名）は「カタカナ」で記入ください。" type="text" name="kanamei" id="name" value="<?php if (isset($kanamei)) {echo $kanamei;} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>メールアドレス</label>
-            <input class="required pattern　maxlength" data-maxlength="100" data-pattern="email" data-error-required="メールアドレスは必須です" data-error-pattern="メールアドレスの形式が違います。" type="email" id="email1" name="email1" >
+            <input class="required pattern　maxlength" data-maxlength="100" data-pattern="email" data-error-required="メールアドレスは必須です" data-error-pattern="メールアドレスの形式が違います。" type="email" id="email1" name="email1" value="<?php if (isset($email)) {echo $email;} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>パスワード</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="パスワードは必須です" data-pattern="^[a-zA-Z0-9!-/:-@[-`{-~]*$" data-error-pattern="パスワードは半角英数字で記入ください。" type="text" name="pass" id="name" >
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="パスワードは必須です" data-pattern="^[a-zA-Z0-9!-/:-@[-`{-~]*$" data-error-pattern="パスワードは半角英数字で記入ください。" type="text" name="pass" id="name" value="<?php if (isset($pass)) {echo $pass;} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>性別</label>
-            <input class="required" data-error-required="いずれかを選択してください" type="radio" name="seibetu" value="男">男
-            <input type="radio" name="seibetu" value="女" >女
+            <input class="required" data-error-required="いずれかを選択してください" type="radio" name="seibetu" value="男" <?php if (isset($seibetu) && $seibetu === "男") {echo "checked";} else {echo "checked";} ?>>男
+            <input type="radio" name="seibetu" value="女" <?php if (isset($seibetu) && $seibetu === "女") {echo "checked";} ?>>女
             </li>
         </div>
         
         <div>
             <li>
             <label>郵便番号</label>
-            <input class="required pattern maxlength" data-maxlength="7" data-error-required="郵便番号は必須です" data-pattern="\d{3}-?\d{4}" data-error-pattern="郵便番号はハイフンなしで半角数字７文字で記入ください。" type="text" name="yuubinn" id="name" >
+            <input class="required pattern maxlength" data-maxlength="7" data-error-required="郵便番号は必須です" data-pattern="\d{3}-?\d{4}" data-error-pattern="郵便番号はハイフンなしで半角数字７文字で記入ください。" type="text" name="yuubinn" id="name" value="<?php if (isset($yuubinn)) {echo $yuubinn;} ?>" >
             </li>
         </div>
         
@@ -112,53 +123,53 @@ if (isset($_GET) && isset($_GET['action']) && $_GET['action'] === 'edit') {
             <label>都道府県</label>
             <select class="required" data-error-required="都道府県が選択されていません。" name="kenn" id="season" >
                 <option value=""></option>
-                <option value="北海道">北海道</option>
-                <option value="青森県">青森県</option>
-                <option value="岩手県">岩手県</option>
-                <option value="宮城県">宮城県</option>
-                <option value="秋田県">秋田県</option>
-                <option value="山形県">山形県</option>
-                <option value="福島県">福島県</option>
-                <option value="茨城県">茨城県</option>
-                <option value="栃木県">栃木県</option>
-                <option value="群馬県">群馬県</option>
-                <option value="埼玉県">埼玉県</option>
-                <option value="千葉県">千葉県</option>
-                <option value="東京都">東京都</option>
-                <option value="神奈川県">神奈川県</option>
-                <option value="新潟県">新潟県</option>
-                <option value="富山県">富山県</option>
-                <option value="石川県">石川県</option>
-                <option value="福井県">福井県</option>
-                <option value="山梨県">山梨県</option>
-                <option value="長野県">長野県</option>
-                <option value="岐阜県">岐阜県</option>
-                <option value="静岡県">静岡県</option>
-                <option value="愛知県">愛知県</option>
-                <option value="三重県">三重県</option>
-                <option value="滋賀県">滋賀県</option>
-                <option value="京都府">京都府</option>
-                <option value="大阪府">大阪府</option>
-                <option value="兵庫県">兵庫県</option>
-                <option value="奈良県">奈良県</option>
-                <option value="和歌山県">和歌山県</option>
-                <option value="鳥取県">鳥取県</option>
-                <option value="島根県">島根県</option>
-                <option value="岡山県">岡山県</option>
-                <option value="広島県">広島県</option>
-                <option value="山口県">山口県</option>
-                <option value="徳島県">徳島県</option>
-                <option value="香川県">香川県</option>
-                <option value="愛媛県">愛媛県</option>
-                <option value="高知県">高知県</option>
-                <option value="福岡県">福岡県</option>
-                <option value="佐賀県">佐賀県</option>
-                <option value="長崎県">長崎県</option>
-                <option value="熊本県">熊本県</option>
-                <option value="大分県">大分県</option>
-                <option value="宮崎県">宮崎県</option>
-                <option value="鹿児島県">鹿児島県</option>
-                <option value="沖縄県">沖縄県</option>
+                <option value="北海道" <?php if (isset($kenn) && $kenn === "北海道") {echo "selected";} ?>>北海道</option>
+                <option value="青森県" <?php if (isset($kenn) && $kenn === "青森県") {echo "selected";} ?>>青森県</option>
+                <option value="岩手県" <?php if (isset($kenn) && $kenn === "岩手県") {echo "selected";} ?>>岩手県</option>
+                <option value="宮城県" <?php if (isset($kenn) && $kenn === "宮城県") {echo "selected";} ?>>宮城県</option>
+                <option value="秋田県" <?php if (isset($kenn) && $kenn === "秋田県") {echo "selected";} ?>>秋田県</option>
+                <option value="山形県" <?php if (isset($kenn) && $kenn === "山形県") {echo "selected";} ?>>山形県</option>
+                <option value="福島県" <?php if (isset($kenn) && $kenn === "福島県") {echo "selected";} ?>>福島県</option>
+                <option value="茨城県" <?php if (isset($kenn) && $kenn === "茨城県") {echo "selected";} ?>>茨城県</option>
+                <option value="栃木県" <?php if (isset($kenn) && $kenn === "栃木県") {echo "selected";} ?>>栃木県</option>
+                <option value="群馬県" <?php if (isset($kenn) && $kenn === "群馬県") {echo "selected";} ?>>群馬県</option>
+                <option value="埼玉県" <?php if (isset($kenn) && $kenn === "埼玉県") {echo "selected";} ?>>埼玉県</option>
+                <option value="千葉県" <?php if (isset($kenn) && $kenn === "千葉県") {echo "selected";} ?>>千葉県</option>
+                <option value="東京都" <?php if (isset($kenn) && $kenn === "東京都") {echo "selected";} ?>>東京都</option>
+                <option value="神奈川県" <?php if (isset($kenn) && $kenn === "神奈川県") {echo "selected";} ?>>神奈川県</option>
+                <option value="新潟県" <?php if (isset($kenn) && $kenn === "新潟県") {echo "selected";} ?>>新潟県</option>
+                <option value="富山県" <?php if (isset($kenn) && $kenn === "富山県") {echo "selected";} ?>>富山県</option>
+                <option value="石川県" <?php if (isset($kenn) && $kenn === "石川県") {echo "selected";} ?>>石川県</option>
+                <option value="福井県" <?php if (isset($kenn) && $kenn === "福井県") {echo "selected";} ?>>福井県</option>
+                <option value="山梨県" <?php if (isset($kenn) && $kenn === "山梨県") {echo "selected";} ?>>山梨県</option>
+                <option value="長野県" <?php if (isset($kenn) && $kenn === "長野県") {echo "selected";} ?>>長野県</option>
+                <option value="岐阜県" <?php if (isset($kenn) && $kenn === "岐阜県") {echo "selected";} ?>>岐阜県</option>
+                <option value="静岡県" <?php if (isset($kenn) && $kenn === "静岡県") {echo "selected";} ?>>静岡県</option>
+                <option value="愛知県" <?php if (isset($kenn) && $kenn === "愛知県") {echo "selected";} ?>>愛知県</option>
+                <option value="三重県" <?php if (isset($kenn) && $kenn === "三重県") {echo "selected";} ?>>三重県</option>
+                <option value="滋賀県" <?php if (isset($kenn) && $kenn === "滋賀県") {echo "selected";} ?>>滋賀県</option>
+                <option value="京都府" <?php if (isset($kenn) && $kenn === "京都府") {echo "selected";} ?>>京都府</option>
+                <option value="大阪府" <?php if (isset($kenn) && $kenn === "大阪府") {echo "selected";} ?>>大阪府</option>
+                <option value="兵庫県" <?php if (isset($kenn) && $kenn === "兵庫県") {echo "selected";} ?>>兵庫県</option>
+                <option value="奈良県" <?php if (isset($kenn) && $kenn === "奈良県") {echo "selected";} ?>>奈良県</option>
+                <option value="和歌山県" <?php if (isset($kenn) && $kenn === "和歌山県") {echo "selected";} ?>>和歌山県</option>
+                <option value="鳥取県" <?php if (isset($kenn) && $kenn === "鳥取県") {echo "selected";} ?>>鳥取県</option>
+                <option value="島根県" <?php if (isset($kenn) && $kenn === "島根県") {echo "selected";} ?>>島根県</option>
+                <option value="岡山県" <?php if (isset($kenn) && $kenn === "岡山県") {echo "selected";} ?>>岡山県</option>
+                <option value="広島県" <?php if (isset($kenn) && $kenn === "広島県") {echo "selected";} ?>>広島県</option>
+                <option value="山口県" <?php if (isset($kenn) && $kenn === "山口県") {echo "selected";} ?>>山口県</option>
+                <option value="徳島県" <?php if (isset($kenn) && $kenn === "徳島県") {echo "selected";} ?>>徳島県</option>
+                <option value="香川県" <?php if (isset($kenn) && $kenn === "香川県") {echo "selected";} ?>>香川県</option>
+                <option value="愛媛県" <?php if (isset($kenn) && $kenn === "愛媛県") {echo "selected";} ?>>愛媛県</option>
+                <option value="高知県" <?php if (isset($kenn) && $kenn === "高知県") {echo "selected";} ?>>高知県</option>
+                <option value="福岡県" <?php if (isset($kenn) && $kenn === "福岡県") {echo "selected";} ?>>福岡県</option>
+                <option value="佐賀県" <?php if (isset($kenn) && $kenn === "佐賀県") {echo "selected";} ?>>佐賀県</option>
+                <option value="長崎県" <?php if (isset($kenn) && $kenn === "長崎県") {echo "selected";} ?>>長崎県</option>
+                <option value="熊本県" <?php if (isset($kenn) && $kenn === "熊本県") {echo "selected";} ?>>熊本県</option>
+                <option value="大分県" <?php if (isset($kenn) && $kenn === "大分県") {echo "selected";} ?>>大分県</option>
+                <option value="宮崎県" <?php if (isset($kenn) && $kenn === "宮崎県") {echo "selected";} ?>>宮崎県</option>
+                <option value="鹿児島県" <?php if (isset($kenn) && $kenn === "鹿児島県") {echo "selected";} ?>>鹿児島県</option>
+                <option value="沖縄県" <?php if (isset($kenn) && $kenn === "沖縄県") {echo "selected";} ?>>沖縄県</option>
             </select>
             </li>
         </div>
@@ -166,22 +177,22 @@ if (isset($_GET) && isset($_GET['action']) && $_GET['action'] === 'edit') {
         <div>
             <li>
             <label>住所(市区町村)</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="住所（市区町村）は必須です。" data-pattern="^[ぁ-ん一-龯ァ-ヶー0-9-+　+]+$" data-error-pattern="住所（市区町村）は「ひらがな」、「漢字」、「数字」、「カタカナ」、「記号（ハイフンとスペース）」が入力可能です。" type="text" name="juusyosiku" id="name"> 
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="住所（市区町村）は必須です。" data-pattern="^[ぁ-ん一-龯ァ-ヶー0-9-+　+]+$" data-error-pattern="住所（市区町村）は「ひらがな」、「漢字」、「数字」、「カタカナ」、「記号（ハイフンとスペース）」が入力可能です。" type="text" name="juusyosiku" id="name" value="<?php if (isset($juusyosiku)) {echo $juusyosiku;} ?>" > 
             </li>
         </div>
         
         <div>
             <li>
             <label>住所（番地）</label>
-            <input class="required pattern maxlength" data-maxlength="100" data-error-required="住所（番地）は必須です。" data-pattern="^[ぁ-ん一-龯ァ-ヶー0-9-+　+]+$" data-error-pattern="住所（市区町村）は「ひらがな」、「漢字」、「数字」、「カタカナ」、「記号（ハイフンとスペース）」が入力可能です。" type="text" name="juusyobann" id="name"> 
+            <input class="required pattern maxlength" data-maxlength="100" data-error-required="住所（番地）は必須です。" data-pattern="^[ぁ-ん一-龯ァ-ヶー0-9-+　+]+$" data-error-pattern="住所（市区町村）は「ひらがな」、「漢字」、「数字」、「カタカナ」、「記号（ハイフンとスペース）」が入力可能です。" type="text" name="juusyobann" id="name" value="<?php if (isset($juusyobann)) {echo $juusyobann;} ?>"> 
             </li>
         </div>
         
         <div>
             <label>アカウント権限</label>
             <select name="aka" id="account">
-                <option value="一般"　class="required">一般</option>
-                <option value="管理者">管理者</option>
+                <option value="一般" class="required" <?php if (isset($aka) && $aka === "一般") {echo "selected";} ?>>一般</option>
+                <option value="管理者" <?php if (isset($aka) && $aka === "管理者") {echo "selected";} ?>>管理者</option>
             </select>
         </div>
         
