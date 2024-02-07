@@ -140,6 +140,19 @@ if(isset($_POST['namesei'])){
         
         <form action="regist_complete.php" method="post">
             <input type="submit" value="登録する" id="touroku" name="token">
+            <input type="hidden" value="<?php echo $_POST ['namesei' ]; ?>" name="namesei">
+            <input type="hidden" value="<?php echo $_POST ['namemei' ]; ?>" name="namemei">
+            <input type="hidden" value="<?php echo $_POST ['kanasei' ]; ?>" name="kanasei">
+            <input type="hidden" value="<?php echo $_POST ['kanamei' ]; ?>" name="kanamei">
+            <input type="hidden" value="<?php echo $_POST ['email1' ]; ?>" name="email1">
+            <input type="hidden" value="<?php echo $_POST ['pass' ]; ?>" name="pass">
+            <input type="hidden" value="<?php echo $_POST ['seibetu' ]; ?>" name="seibetu">
+            <input type="hidden" value="<?php echo $_POST ['yuubinn' ]; ?>" name="yuubinn">
+            <input type="hidden" value="<?php echo $_POST ['kenn' ]; ?>" name="kenn">
+            <input type="hidden" value="<?php echo $_POST ['juusyosiku' ]; ?>" name="juusyosiku">
+            <input type="hidden" value="<?php echo $_POST ['juusyobann' ]; ?>" name="juusyobann">
+            <input type="hidden" value="<?php echo $_POST ['aka' ]; ?>" name="aka">
+            
         </form>
         
     </ul>
