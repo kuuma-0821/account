@@ -14,6 +14,14 @@ if(isset($_POST['namesei'])){
     $_SESSION['juusyobann'] = $_POST['juusyobann'];
     $_SESSION['aka'] = $_POST['aka'];
 }
+
+if($_POST === "男"){
+    $sex = 1;
+    echo $sex;
+}
+
+
+
 ?>
 
 <!DOCTYPE html>

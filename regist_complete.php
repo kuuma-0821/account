@@ -5,16 +5,18 @@
         $pass_after = password_hash($pass,PASSWORD_DEFAULT);
     }
 
+    $gender = $_POST['seibetu']=="女" ? 1 : 0;
+
 mb_internal_encoding("utf8");
 
 $pdo= new PDO("mysql:dbname=lesson01;host=localhost;","root","");
 
 $pdo->exec("insert into account_registration(family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_1,address_2,authority)values
-('".$_POST['namesei']."','".$_POST['namemei']."','".$_POST['kanasei']."','".$_POST['kanamei']."','".$_POST['email1']."','".$pass_after."','".$_POST['seibetu']."','".$_POST['yuubinn']."','".$_POST['kenn']."','".$_POST['juusyosiku']."','".$_POST['juusyobann']."','".$_POST['aka']."');");
+('".$_POST['namesei']."','".$_POST['namemei']."','".$_POST['kanasei']."','".$_POST['kanamei']."','".$_POST['email1']."','".$pass_after."','".$gender."','".$_POST['yuubinn']."','".$_POST['kenn']."','".$_POST['juusyosiku']."','".$_POST['juusyobann']."','".$_POST['aka']."');");
 
 ?>
 
-?>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -45,7 +47,7 @@ $pdo->exec("insert into account_registration(family_name,last_name,family_name_k
 </header>
    
     <h1>アカウント登録完了画面</h1>
-    <?php echo $_POST['seibetu']; ?>
+    <?php echo $gender ?>
     <h2>登録完了しました</h2>
     
     
