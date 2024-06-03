@@ -36,6 +36,8 @@ $stmt = $pdo->query("select * from account_registration");
     </div>
 </header>
     
+    <h1>アカウント一覧画面</h1>
+    
     <table border="1">
   <tr>
     <th>id</th>
@@ -72,13 +74,16 @@ $stmt = $pdo->query("select * from account_registration");
                 <td><?php echo $record['family_name_kana']?></td>
                 <td><?php echo $record['last_name_kana']?></td>
                 <td><?php echo $record['mail']?></td>
-                <td><?php echo $record['gender']?></td>
-                <td><?php echo $record['authority']?></td>
-                <td><?php echo $record['delete_flag']?></td>
-                <td><?php echo $record['registered_time']?></td>
-                <td><?php echo $record['update_time']?></td>
+                
+                <td><?php if($record['gender'] === 0){ echo "男";}else{ echo "女";}?></td>
+                <td><?php if($record['authority'] === 0){ echo "一般";}else{ echo "管理者";}?></td>
+                <td><?php if($record['delete_flag'] === 0){ echo "有効";}else{ echo "無効";}?></td>
+                
+                <td><?php echo substr($record['registered_time'],0,10);?></td>
+                <td><?php echo substr($record['update_time'],0,10);?></td>
                 <td><a href="account_/delete.php=<?php echo $value['id']; ?>">更新</a></td>
                 <td><a href="account_/delete.php=<?php echo $value['id']; ?>">削除</a></td>
+                
             </tr>
         
         <?php }?>
