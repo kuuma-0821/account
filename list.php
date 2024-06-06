@@ -1,12 +1,3 @@
-<?php
-
-$pdo= new PDO("mysql:dbname=lesson01;host=localhost;","root","");
-
-$stmt = $pdo->query("select * from account_registration");
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -64,7 +55,7 @@ $stmt = $pdo->query("select * from account_registration");
      ?>   
     
         <?php
-        foreach($stmt as $record){?>
+        foreach($stmt as $record): ?>
         
             <tr>
                 
@@ -81,12 +72,12 @@ $stmt = $pdo->query("select * from account_registration");
                 
                 <td><?php echo substr($record['registered_time'],0,10);?></td>
                 <td><?php echo substr($record['update_time'],0,10);?></td>
-                <td><a href="account_/delete.php=<?php echo $value['id']; ?>">更新</a></td>
-                <td><a href="account_/delete.php=<?php echo $value['id']; ?>">削除</a></td>
+                <td><a href="delete.php?id=<?php echo $record['id'] ?>">更新</a></td>
+                <td><a href="delete.php?id=<?php echo $record['id'] ?>">削除</a></td>
                 
             </tr>
         
-        <?php }?>
+        <?php endforeach; ?>
 
     </table>
     

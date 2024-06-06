@@ -7,13 +7,14 @@
 
     $gender = $_POST['seibetu']=="女" ? 1 : 0;
     $account = $_POST['aka']=="管理者" ? 1 : 0;
+    $sakujo = 0;
 
 mb_internal_encoding("utf8");
 
 $pdo= new PDO("mysql:dbname=lesson01;host=localhost;","root","");
 
-$pdo->exec("insert into account_registration(family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_1,address_2,authority)values
-('".$_POST['namesei']."','".$_POST['namemei']."','".$_POST['kanasei']."','".$_POST['kanamei']."','".$_POST['email1']."','".$pass_after."','".$gender."','".$_POST['yuubinn']."','".$_POST['kenn']."','".$_POST['juusyosiku']."','".$_POST['juusyobann']."','".$account."');");
+$pdo->exec("insert into account_registration(family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_1,address_2,authority,delete_flag)values
+('".$_POST['namesei']."','".$_POST['namemei']."','".$_POST['kanasei']."','".$_POST['kanamei']."','".$_POST['email1']."','".$pass_after."','".$gender."','".$_POST['yuubinn']."','".$_POST['kenn']."','".$_POST['juusyosiku']."','".$_POST['juusyobann']."','".$account."','".$sakujo."');");
 
 ?>
 
