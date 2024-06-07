@@ -48,6 +48,7 @@
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -76,24 +77,17 @@
     </ul>
     </div>
 </header>
+
+    <h1>アカウント削除確認画面</h1>
     
-    <h1>アカウント削除画面</h1>
-    <p><?php echo $result['id']?></p>
-    <p>名前（姓）　　　　　<?php echo $result['family_name'] ?></p>
-    <p>名前（名）　　　　　<?php echo $result['last_name'] ?></p>
-    <p>カナ（姓）　　　　　<?php echo $result['family_name_kana'] ?></p>
-    <p>カナ（名）　　　　　<?php echo $result['family_name_kana'] ?></p>
-    <p>メールアドレス　　　<?php echo $result['mail'] ?></p>
-    <p>パスワード　　　　　<?php echo '●●●●●●' ?></p>
-    <p>性別　　　　　　　　<?php if($result['gender'] === 0){ echo "男";}else{ echo "女";} ?></p>
-    <p>郵便番号　　　　　　<?php echo $result['postal_code'] ?></p>
-    <p>住所（都道府県）　　<?php echo $result['prefecture'] ?></p>
-    <p>住所（市区町村）　　<?php echo $result['address_1'] ?></p>
-    <p>住所（番地）　　　　<?php echo $result['address_2'] ?></p>
-    <p>アカウント権限　　　<?php if($result['authority'] === 0){ echo "一般";}else{ echo "管理者";} ?></p>
     
-    <a href="delete_confirm.php?id=<?php echo $result['id'] ?>">確認する</a>
+    <p>本当に削除してよろしいですか？</p>
     
+    <a href="delete.php?id=<?php echo $result['id'] ?>">前に戻る</a>
+    
+    <form action="delete_complete.php">
+        <input type="submit" class="button" value="削除する">
+    </form>
     
     
     
