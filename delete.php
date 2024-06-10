@@ -30,7 +30,7 @@
     $dbh = dbConnect();
 
 
-//SQL準備(今回はセキュリティを強めるためにプレースホルダーを作る)
+//SQLの準備(今回はセキュリティを強めるためにプレースホルダーを作る)
 //プレースホルダ―を使うためSQL文はprepareメソッドを使っていく
     $stmt = $dbh->prepare('SELECT * FROM account_registration Where id = :id');
     
