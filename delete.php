@@ -78,7 +78,6 @@
 </header>
     
     <h1>アカウント削除画面</h1>
-    <p><?php echo $result['id']?></p>
     <p>名前（姓）　　　　　<?php echo $result['family_name'] ?></p>
     <p>名前（名）　　　　　<?php echo $result['last_name'] ?></p>
     <p>カナ（姓）　　　　　<?php echo $result['family_name_kana'] ?></p>

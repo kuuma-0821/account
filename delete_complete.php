@@ -30,9 +30,9 @@
     $dbh = dbConnect();
 
 
-//SQL準備(今回はセキュリティを強めるためにプレースホルダーを作る)
+//SQLの準備(今回はセキュリティを強めるためにプレースホルダーを作る)
 //プレースホルダ―を使うためSQL文はprepareメソッドを使っていく
-    $stmt = $dbh->prepare('SELECT * FROM account_registration Where id = :id');
+    $stmt = $dbh->prepare('DELETE FROM account_registration Where id = :id');
     
 
 //プレースホルダ―を設定するためにbindValueメソッドを使っていく
@@ -42,9 +42,6 @@
 //SQL実行するためにexecuteメソッドをつかう
     $stmt->execute();
 
-
-//結果を取得していく。今回は一つの結果でいいのでfetchを使っていく
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -77,19 +74,14 @@
     </ul>
     </div>
 </header>
+   
+    <h1>アカウント削除完了画面</h1>
+    
+    <p>削除完了しました</p>
 
-    <h1>アカウント削除確認画面</h1>
-    
-    
-    <p>本当に削除してよろしいですか？</p>
-    
-    <a href="delete.php?id=<?php echo $result['id'] ?>">前に戻る</a>
-    
-    <a href="delete_complete.php?id=<?php echo $result['id'] ?>">削除する</a>
-    
-
-    
-    
+    <div class="botan">
+        <input type="submit" onclick="location.href='http://localhost/account/DIブログ .html'" value="TOPページへ戻る" id="top" name="submit1">
+    </div>
     
 </body>    
         
