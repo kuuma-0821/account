@@ -72,7 +72,7 @@
                 
                 <td><?php echo substr($record['registered_time'],0,10);?></td>
                 <td><?php echo substr($record['update_time'],0,10);?></td>
-                <td><a href="delete.php?id=<?php echo $record['id'] ?>">更新</a></td>
+                <td><a href="update.php?id=<?php echo $record['id'] ?>">更新</a></td>
                 <td><a href="delete.php?id=<?php echo $record['id'] ?>">削除</a></td>
                 
             </tr>

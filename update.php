@@ -46,6 +46,23 @@
 //結果を取得していく。今回は一つの結果でいいのでfetchを使っていく
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+session_start();
+if (isset($_GET) && isset($_GET['action']) && $_GET['action'] === 'edit') {
+        $namesei = $_SESSION['namesei'];
+        $namemei = $_SESSION['namemei'];
+        $kanasei = $_SESSION['kanasei'];
+        $kanamei = $_SESSION['kanamei'];
+        $email = $_SESSION['email'];
+        $pass = $_SESSION['pass'];
+        $seibetu = $_SESSION['seibetu'];
+        $yuubinn = $_SESSION['yuubinn'];
+        $kenn = $_SESSION['kenn'];
+        $juusyosiku = $_SESSION['juusyosiku'];
+        $juusyobann = $_SESSION['juusyobann'];
+        $aka = $_SESSION['aka'];
+}
+
+
 ?>
 
 
@@ -80,54 +97,54 @@
     
     <h1>アカウント更新画面</h1>
     
-        <form method="POST" action="regist_confirm.php" class="validationForm" novalidate>
+        <form method="POST" action="update_confirm.php?id=<?php echo $result['id'] ?>" class="validationForm" novalidate>
         <ul>
         <div>
             <li>
             <label>名前（姓）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前(姓)は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（姓）は「ひらがな」または「漢字」で記入ください。" type="text" name="namesei" value="<?php echo $result['family_name'] ?>" >
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前(姓)は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（姓）は「ひらがな」または「漢字」で記入ください。" type="text" name="namesei" value="<?php if (isset($namesei)) {echo $namesei;} else{echo $result['family_name'];} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>名前（名）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前（名）は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（名）は「ひらがな」または「漢字」で記入ください。" type="text" name="namemei" value="<?php echo $result['last_name'] ?>" >
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="名前（名）は必須です" data-pattern="^^[ぁ-ん一-龯]+$" data-error-pattern="名前（名）は「ひらがな」または「漢字」で記入ください。" type="text" name="namemei" value="<?php if (isset($namemei)) {echo $namemei;} else{echo $result['last_name'];} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>カナ（姓）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（姓）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（姓）は「カタカナ」で記入ください。" type="text" name="kanasei" id="name" value="<?php echo $result['family_name_kana'] ?>" >
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（姓）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（姓）は「カタカナ」で記入ください。" type="text" name="kanasei" id="name" value="<?php if (isset($kanasei)) {echo $kanasei;} else{echo $result['family_name_kana'];} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>カナ（名）</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（名）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（名）は「カタカナ」で記入ください。" type="text" name="kanamei" id="name" value="<?php echo $result['family_name_kana'] ?>" >
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="カナ（名）は必須です" data-pattern="^[ァ-ヶー]+$" data-error-pattern="カナ（名）は「カタカナ」で記入ください。" type="text" name="kanamei" id="name" value="<?php if (isset($kanamei)) {echo $kanamei;} else{echo $result['last_name_kana'];} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>メールアドレス</label>
-            <input class="required pattern　maxlength" data-maxlength="100" data-pattern="email" data-error-required="メールアドレスは必須です" data-error-pattern="メールアドレスの形式が違います。" type="email" id="email1" name="email1" value="<?php echo $result['mail'] ?>" >
+            <input class="required pattern　maxlength" data-maxlength="100" data-pattern="email" data-error-required="メールアドレスは必須です" data-error-pattern="メールアドレスの形式が違います。" type="email" id="email1" name="email1" value="<?php if (isset($email)) {echo $email;} else{echo $result['mail'];} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>パスワード</label>
-            <input class="required pattern maxlength" data-maxlength="10" data-error-required="パスワードは必須です" data-pattern="^[a-zA-Z0-9!-/:-@[-`{-~]*$" data-error-pattern="パスワードは再入力お願いいたします。" type=""  name="text" id="name" value="●●●●●●" >
+            <input class="required pattern maxlength" data-maxlength="10" data-error-required="パスワードは必須です" data-pattern="^[a-zA-Z0-9!-/:-@[-`{-~]*$" data-error-pattern="パスワードは再入力お願いいたします。" type="text"  name="pass" id="name" value="<?php if (isset($pass)) {echo $pass;} else{echo "●●●●●●";} ?>" >
             </li>
         </div>
         
         <div>
             <li>
             <label>性別</label>
-            <input class="required" data-error-required="いずれかを選択してください" type="radio" name="seibetu" value="0" <?php if($result['gender'] === 0) echo "checked" ?>>男
+            <input class="required" data-error-required="いずれかを選択してください" type="radio" name="seibetu" value="0" <?php if($result['gender'] === 0) {echo "checked";} ?>>男
             <input type="radio" name="seibetu" value="1" <?php if($result['gender'] === 1) echo "checked" ?>>女
         </div>
         
@@ -482,12 +499,3 @@ document.addEventListener('DOMContentLoaded', () => {
         
 </html>
     
-    
-    
-    
-    
-    
-    
-</body>    
-        
-</html>
