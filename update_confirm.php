@@ -2,7 +2,7 @@
 
 //前のページからidを取ってくる
     $id = $_GET['id'];
-
+    var_dump($id);
 
 //データベースに接続する関数作成
 //引数：なし
@@ -45,28 +45,26 @@
 //結果を取得していく。今回は一つの結果でいいのでfetchを使っていく
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-session_start();
-if(isset($_POST['namesei'])){
-    $_SESSION['namesei'] = $_POST['namesei'];
-    $_SESSION['namemei'] = $_POST['namemei'];
-    $_SESSION['kanasei'] = $_POST['kanasei'];
-    $_SESSION['kanamei'] = $_POST['kanamei'];
-    $_SESSION['email'] = $_POST['email1'];
-    $_SESSION['pass'] = $_POST['pass'];
-    $_SESSION['seibetu'] = $_POST['seibetu'];
-    $_SESSION['yuubinn'] = $_POST['yuubinn'];
-    $_SESSION['kenn'] = $_POST['kenn'];
-    $_SESSION['juusyosiku'] = $_POST['juusyosiku'];
-    $_SESSION['juusyobann'] = $_POST['juusyobann'];
-    $_SESSION['aka'] = $_POST['aka'];
-}
 
-if($_POST === "男"){
-    $sex = 1;
-    echo $sex;
-}
+    $id = $result['id'];
+    $namesei = $_POST['namesei'];
+    $namemei = $_POST['namemei'];
+    $kanasei = $_POST['kanasei'];
+    $kanamei = $_POST['kanamei'];
+    $email = $_POST['email'];
+    $pass = $_POST['pass'];
+    $gender = $_POST['seibetu'];
+    $yuubinn = $_POST['yuubinn'];
+    $kenn = $_POST['kenn'];
+    $juusyosiku = $_POST['juusyosiku'];
+    $juusyobann = $_POST['juusyobann'];
+    $aka = $_POST['aka'];
 
 
+
+
+    var_dump($id);
+    var_dump($_POST['seibetu']);
 
 ?>
 
@@ -105,35 +103,35 @@ if($_POST === "男"){
         <div>
             <li>
             <label>名前（姓）</label>
-            <?php echo $_SESSION['namesei']; ?>
+            <?php echo $namesei; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>名前（名）</label>
-            <?php echo $_SESSION['namemei']; ?>
+            <?php echo $namemei; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>カナ（姓）</label>
-            <?php echo $_SESSION['kanasei']; ?>
+            <?php echo $kanasei; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>カナ（名）</label>
-            <?php echo $_SESSION['kanamei']; ?>
+            <?php echo $kanamei; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>メールアドレス</label>
-            <?php echo $_POST['email1']; ?>
+            <?php echo $email; ?>
             </li>
         </div>
         
@@ -141,71 +139,85 @@ if($_POST === "男"){
             <li>
             <label>パスワード</label>
             <label>●●●●●●●</label><br>
-            <input type="hidden" value="<?php echo $_POST['pass']; ?>" name="pass">
             </li>
         </div>
         
         <div>
             <li>
             <label>性別</label>
-            <?php echo $_SESSION['seibetu']; ?>
+            <?php if($gender === "0"){echo "男";}else{echo "女";} ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>郵便番号</label>
-            <?php echo $_SESSION['yuubinn']; ?>
+            <?php echo $yuubinn; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>住所（都道府県）</label>
-            <?php echo $_SESSION['kenn']; ?>
+            <?php echo $kenn; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>住所（市区町村）</label>
-            <?php echo $_SESSION['juusyosiku']; ?>
+            <?php echo $juusyosiku; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>住所（番地）</label>
-            <?php echo $_SESSION['juusyobann']; ?>
+            <?php echo $juusyobann; ?>
             </li>
         </div>
         
         <div>
             <li>
             <label>アカウント権限</label>
-            <?php echo $_SESSION['aka']; ?>
+            <?php if($aka === "0"){echo "一般";}else{echo "管理者";} ?>
             </li>
         </div>
         
+        
         <form action="update.php?action=edit&id=<?php echo $result['id']?>" method="post">
             <input type="submit" value="前に戻る" id="modoru" >
-            <input type="hidden"  name="namesei">
+            <input type="hidden" value="<?php echo $namesei; ?>" name="namesei">
+            <input type="hidden" value="<?php echo $namemei; ?>" name="namemei">
+            <input type="hidden" value="<?php echo $kanasei; ?>" name="kanasei">
+            <input type="hidden" value="<?php echo $kanamei; ?>" name="kanamei">
+            <input type="hidden" value="<?php echo $email; ?>" name="email">
+            <input type="hidden" value="<?php echo $pass; ?>" name="pass">
+            <input type="hidden" value="<?php echo $gender; ?>" name="gender">
+            <input type="hidden" value="<?php echo $yuubinn; ?>" name="yuubinn">
+            <input type="hidden" value="<?php echo $kenn; ?>" name="kenn">
+            <input type="hidden" value="<?php echo $juusyosiku; ?>" name="juusyosiku">
+            <input type="hidden" value="<?php echo $juusyobann; ?>" name="juusyobann">
+            <input type="hidden" value="<?php echo $aka; ?>" name="aka">
+            
+            
         </form>
         
-        <form action="regist_complete.php" method="post">
+        <form action="update_complete.php?id=<?php echo $result['id']?>" method="post">
             <input type="submit" value="登録する" id="touroku" >
-            <input type="hidden" value="<?php echo $_POST ['namesei' ]; ?>" name="namesei">
-            <input type="hidden" value="<?php echo $_POST ['namemei' ]; ?>" name="namemei">
-            <input type="hidden" value="<?php echo $_POST ['kanasei' ]; ?>" name="kanasei">
-            <input type="hidden" value="<?php echo $_POST ['kanamei' ]; ?>" name="kanamei">
-            <input type="hidden" value="<?php echo $_POST ['email1' ]; ?>" name="email1">
-            <input type="hidden" value="<?php echo $_POST ['pass' ]; ?>" name="pass">
-            <input type="hidden" value="<?php echo $_POST ['seibetu' ]; ?>" name="seibetu">
-            <input type="hidden" value="<?php echo $_POST ['yuubinn' ]; ?>" name="yuubinn">
-            <input type="hidden" value="<?php echo $_POST ['kenn' ]; ?>" name="kenn">
-            <input type="hidden" value="<?php echo $_POST ['juusyosiku' ]; ?>" name="juusyosiku">
-            <input type="hidden" value="<?php echo $_POST ['juusyobann' ]; ?>" name="juusyobann">
-            <input type="hidden" value="<?php echo $_POST ['aka' ]; ?>" name="aka">
+            <input type="hidden" value="<?php echo $id; ?>" name="id">
+            <input type="hidden" value="<?php echo $namesei; ?>" name="namesei">
+            <input type="hidden" value="<?php echo $namemei; ?>" name="namemei">
+            <input type="hidden" value="<?php echo $kanasei; ?>" name="kanasei">
+            <input type="hidden" value="<?php echo $kanamei; ?>" name="kanamei">
+            <input type="hidden" value="<?php echo $email; ?>" name="email">
+            <input type="hidden" value="<?php echo $pass; ?>" name="pass">
+            <input type="hidden" value="<?php echo $gender; ?>" name="seibetu">
+            <input type="hidden" value="<?php echo $yuubinn; ?>" name="yuubinn">
+            <input type="hidden" value="<?php echo $kenn; ?>" name="kenn">
+            <input type="hidden" value="<?php echo $juusyosiku; ?>" name="juusyosiku">
+            <input type="hidden" value="<?php echo $juusyobann; ?>" name="juusyobann">
+            <input type="hidden" value="<?php echo $aka; ?>" name="aka">
             
         </form>
         
