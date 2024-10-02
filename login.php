@@ -1,5 +1,6 @@
+aaaaaaaaaaaaaaaaaaaaaa
 <?php   
-
+session_start();
 
 
 function dbConnect(){
@@ -16,6 +17,12 @@ function dbConnect(){
     
         return $dbh;
     
+    }
+
+    if (isset($_SESSION['login_user']) && $_SESSION['login_user']['id'] > 0){
+        
+        return $result = true;
+        
     }
 
 
