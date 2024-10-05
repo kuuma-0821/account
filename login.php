@@ -1,29 +1,53 @@
-aaaaaaaaaaaaaaaaaaaaaa
+
 <?php   
 session_start();
 
 
-function dbConnect(){
+
+
+
+    if(isset($_POST['login'])){
+        
+        $mail = $_POST['email'];
+        $password = $_POST['password'];
+        
         try {
-        $dbh = new PDO("mysql:dbname=lesson01;host=localhost;","root","",[
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_EMULATE_PREPARES => false,
-        ]);
+            $db = new PDO("mysql:dbname=lesson01;host=localhost;","root","");
+            $sql = 'select count(*) from account_registration where mail=:mail';
+            $stmt = $db->prepare(sql);
+    
 
-        }   catch(PDOException $e) {
-            echo '接続失敗'. $e->getMessage();
-            exit();
-        };
-    
-        return $dbh;
-    
+            $stmt->bindValue(':mail', $mail, PDO::PARAM_STR);
+            
+            $stmt->execute();
+            $result = $stmt->fetch();
+            $stmt = null;
+            $db = null;
+        
+            
+            if ($result[0] != 0){
+                echo 'aaa';
+                exit;
+                
+            }
+                
+            
+            }catch (PDOExeption $e) {
+                echo $e->getMessage();
+                exit;
+            }
+                
+                
+                
+                
+                
+                
+                
     }
 
-    if (isset($_SESSION['login_user']) && $_SESSION['login_user']['id'] > 0){
-        
-        return $result = true;
-        
-    }
+
+
+
 
 
 
@@ -42,7 +66,7 @@ function dbConnect(){
 <body>
     
     <h2>ログイン画面</h2>
-        <form action='http://localhost/account/DIブログ .html' method="POST">
+        <form action='' method="POST">
         <p>
             <label for="email">メールアドレス：</label>
             <input type="email" name="email">
@@ -52,7 +76,7 @@ function dbConnect(){
             <input type="password" name="password">
         </p>    
         <p>
-            <input type="submit" value="ログイン">
+            <input type="submit" value="ログイン" name="login">
         </p>    
         </form>
     
