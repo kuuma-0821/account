@@ -17,7 +17,7 @@ session_start();
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         if(!$result) {
-            echo "ログインに失敗しました。";
+            echo '<span style="color:#FF0000;">ログインに失敗しました。</span>';
             exit;
         }
         
@@ -26,7 +26,7 @@ session_start();
             $_SESSION['practice'] = true;
             header("Location: practice_form.php");
         }else{
-            echo 'ログイン失敗';
+            echo '<span style="color:#FF0000;">ログイン失敗</span>';
             exit;
         }
 

@@ -13,7 +13,7 @@
 <body>
     
     <h2>ログイン画面</h2>
-        <form action='login_confirm.php' method="POST">
+        <form action='DIブログ .html' method="POST">
         <p>
             <label for="email">メールアドレス：</label>
             <input type="email" name="email">
