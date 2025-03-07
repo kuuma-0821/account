@@ -29,6 +29,32 @@
     
     <h1>アカウント一覧画面</h1>
     
+
+        <form action='list.php' method="POST">
+            名前（姓）<input type="text" name="namesei"><br>    
+            名前（名）<input type="text" name="namemei"><br>
+            カナ（姓）<input type="text" name="kanasei"><br>
+            カナ（名）<input type="text" name="kanamei"><br>
+            メールアドレス<input type="mail" name="email"><br>
+            性別<input type="radio" name="gender" value="男">男
+                <input type="radio" name="gender" value="女">女<br>
+            権限<select name="authority" >
+                <option value="一般">一般</option>
+                <option value="管理者">管理者</option>
+                </select>
+        <p>
+            <input type="submit" value="検索">
+        </p>    
+        </form>
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <table border="1">
   <tr>
     <th>id</th>
