@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -48,64 +52,23 @@
         </form>
     
     
-    
-    
-    
-    
-    
-    
-    
-    <table border="1">
-  <tr>
-    <th>id</th>
-    <th>名前（姓）</th>
-    <th>名前（名）</th>
-    <th>カナ（姓）</th>
-    <th>カナ（名）</th>
-    <th>メールアドレス</th>
-    <th>性別</th>
-    <th>アカウント権限</th>
-    <th>削除フラグ</th>
-    <th>登録日時</th>
-    <th>更新日時</th>
-    <th colspan="2">操作</th>
-    
-  </tr>
-    
     <?php
-
-        $pdo= new PDO("mysql:dbname=lesson01;host=localhost;","root","");
-
-        $stmt = $pdo->query("select * from account_registration ORDER BY id DESC");
-        
-     ?>   
+    //データベースへ接続
+    $pdo= new PDO("mysql:dbname=lesson01;host=localhost;","root","");
+        if(@$_POST["namesei"] != "" OR @$_POST["namemei"] != "" OR @$_POST["kanasei"] != "" OR @$_POST["kanamei"] != "" OR @$_POST["email"] != ""  ){ //IDおよびユーザー名の入力有無を確認
+            $stmt = $pdo->query("SELECT * FROM account_registration WHERE family_name LIKE '%" .$_POST["namesei"]. "%' and last_name LIKE '%" .$_POST["namemei"]. "%' and family_name_kana LIKE '%" .$_POST["kanasei"]. "%' and last_name_kana LIKE '%" .$_POST["kanamei"]. "%' and mail LIKE '%" .$_POST["email"]. "%'  "); //SQL文を実行して、結果を$stmtに代入する。
+        }
+    ?>
     
-        <?php
-        foreach($stmt as $record): ?>
-        
-            <tr>
-                
-                <td><?php echo $record['id']?></td>
-                <td><?php echo $record['family_name']?></td>
-                <td><?php echo $record['last_name']?></td>
-                <td><?php echo $record['family_name_kana']?></td>
-                <td><?php echo $record['last_name_kana']?></td>
-                <td><?php echo $record['mail']?></td>
-                
-                <td><?php if($record['gender'] === 0){ echo "男";}else{ echo "女";}?></td>
-                <td><?php if($record['authority'] === 0){ echo "一般";}else{ echo "管理者";}?></td>
-                <td><?php if($record['delete_flag'] === 0){ echo "有効";}else{ echo "無効";}?></td>
-                
-                <td><?php echo substr($record['registered_time'],0,10);?></td>
-                <td><?php echo substr($record['update_time'],0,10);?></td>
-                <td><a href="update.php?id=<?php echo $record['id'] ?>">更新</a></td>
-                <td><a href="delete.php?id=<?php echo $record['id'] ?>">削除</a></td>
-                
-            </tr>
-        
-        <?php endforeach; ?>
+    <?php var_dump($stmt); ?>
+    
+    <?php foreach ($stmt as $row): ?>
+        <tr><td><?php echo $row[0]?></td><td><?php echo $row[1]?></td></tr>
+    <?php endforeach; ?>
+    
+    
+    
 
-    </table>
     
     
     
